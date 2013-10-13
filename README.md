@@ -1,3 +1,4 @@
+
 # NAME
 
 Test::Naming::Spell - It's new $module
