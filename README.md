@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/moznion/Test-Naming-Spell.png?branch=master)](https://travis-ci.org/moznion/Test-Naming-Spell)
 # NAME
 
 Test::Naming::Spell - It's new $module
