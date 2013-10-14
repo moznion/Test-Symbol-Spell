@@ -23,8 +23,8 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    name            => 'Test-Naming-Spell',
-    module_name     => 'Test::Naming::Spell',
+    name            => 'Test-Symbol-Spell',
+    module_name     => 'Test::Symbol::Spell',
     allow_pureperl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],

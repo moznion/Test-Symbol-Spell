@@ -7,9 +7,9 @@ use FindBin;
 use Path::Tiny;
 use File::Spec::Functions qw/catdir/;
 
-use Test::Naming::Spell;
+use Test::Symbol::Spell;
 use Test::More;
 
-naming_ok catdir(path($FindBin::Bin)->dirname, "lib", "Test", "Naming", "Spell.pm");
+naming_ok catdir(path($FindBin::Bin)->dirname, "lib", "Test", "Symbol", "Spell.pm");
 
 done_testing;

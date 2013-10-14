@@ -4,7 +4,7 @@
       "moznion <moznion@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.7.5, CPAN::Meta::Converter version 2.132661",
+   "generated_by" : "Minilla/v0.7.5, CPAN::Meta::Converter version 2.132660",
    "license" : [
       "perl_5"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Test-Naming-Spell",
+   "name" : "Test-Symbol-Spell",
    "no_index" : {
       "directory" : [
          "t",
@@ -61,13 +61,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/moznion/Test-Naming-Spell/issues"
+         "web" : "https://github.com/moznion/Test-Symbol-Spell/issues"
       },
-      "homepage" : "https://github.com/moznion/Test-Naming-Spell",
+      "homepage" : "https://github.com/moznion/Test-Symbol-Spell",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/moznion/Test-Naming-Spell.git",
-         "web" : "https://github.com/moznion/Test-Naming-Spell"
+         "url" : "git://github.com/moznion/Test-Symbol-Spell.git",
+         "web" : "https://github.com/moznion/Test-Symbol-Spell"
       }
    },
    "version" : "0.01"

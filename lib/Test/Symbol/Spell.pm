@@ -1,4 +1,4 @@
-package Test::Naming::Spell;
+package Test::Symbol::Spell;
 use 5.008005;
 use strict;
 use warnings;
@@ -128,15 +128,15 @@ __END__
 
 =head1 NAME
 
-Test::Naming::Spell - It's new $module
+Test::Symbol::Spell - It's new $module
 
 =head1 SYNOPSIS
 
-    use Test::Naming::Spell;
+    use Test::Symbol::Spell;
 
 =head1 DESCRIPTION
 
-Test::Naming::Spell is ...
+Test::Symbol::Spell is ...
 
 =head1 LICENSE
 
