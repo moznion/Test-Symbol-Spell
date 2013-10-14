@@ -121,7 +121,7 @@ sub _diet_PPI_doc {
 
     return $document;
 }
-1;
+'songmu-san he';
 __END__
 
 =encoding utf-8
