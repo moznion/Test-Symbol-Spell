@@ -7,6 +7,7 @@ use parent qw/Test::Builder::Module/;
 use List::MoreUtils qw/uniq/;
 use PPI::Document;
 use Spellunker;
+use String::CamelCase ();
 
 our $VERSION = "0.01";
 
@@ -43,20 +44,23 @@ sub _check_naming {
     my $fail = 0;
     my $spellunker = Spellunker->new();
 
-    # TODO camel
     my $names = _extract_names($file);
     foreach my $name (@$names) {
         my @words = split /::/, $name; # for functions
 
-        # for variables
         my @_words;
         for my $word (@words) {
-            my @__words;
-            push @__words, split /_/, $word;
-            for my $_word (@__words) {
-                my @_word = $_word =~ /([A-Z][a-z]*)/g;
+            for my $split (String::CamelCase::wordsplit($word)) {
+                my @split_by_number = $split =~ /(\w+?)(\d+)/g;
+                if (@split_by_number) {
+                    push @_words, @split_by_number;
+                }
+                else {
+                    push @_words, $split;
+                }
             }
         }
+
         @words = grep { $_ } @_words;
 
         for my $word (@words) {

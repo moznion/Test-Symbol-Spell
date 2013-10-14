@@ -1,3 +1,4 @@
+requires 'String::CamelCase';
 requires 'List::MoreUtils';
 requires 'PPI::Document';
 requires 'Spellunker';
