@@ -51,7 +51,11 @@ sub _check_naming {
         # for variables
         my @_words;
         for my $word (@words) {
-            push @_words, split /_/, $word;
+            my @__words;
+            push @__words, split /_/, $word;
+            for my $_word (@__words) {
+                my @_word = $_word =~ /([A-Z][a-z]*)/g;
+            }
         }
         @words = grep { $_ } @_words;
 
