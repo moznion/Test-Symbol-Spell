@@ -38,6 +38,8 @@ sub _init {
         }
     }
 
+    Lingua::Ispell::allow_compounds(1);
+
     bless {
         builder => __PACKAGE__->builder,
     }, $class;
@@ -187,6 +189,11 @@ sub _list_up_files_from_manifest {
 sub set_ispell_path ($) {
     my $ispell_path = shift;
     $Lingua::Ispell::path = $ispell_path;
+}
+
+sub allow_compounds ($) {
+    my $bool = shift;
+    Lingua::Ispell::allow_compounds($bool);
 }
 
 'songmu-san he';
