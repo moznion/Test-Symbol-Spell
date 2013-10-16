@@ -10,7 +10,6 @@ use File::Spec::Functions qw/catdir/;
 use Test::Symbol::Spelling;
 use Test::More;
 
-symbol_spelling_ok catdir(path($FindBin::Bin)->dirname, "lib", "Test", "Symbol", "Spelling.pm");
 symbol_spelling_ok catdir($FindBin::Bin, "resources", "succ", "succ.pm");
 
 done_testing;
