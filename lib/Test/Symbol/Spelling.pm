@@ -196,6 +196,15 @@ sub allow_compounds ($) {
     Lingua::Ispell::allow_compounds($bool);
 }
 
+sub use_dictionary ($) {
+    my $dictionary = shift;
+    Lingua::Ispell::use_dictionary($dictionary);
+}
+
+sub use_personal_dictionary ($) {
+    my $dictionary = shift;
+    Lingua::Ispell::use_personal_dictionary($dictionary);
+}
 'songmu-san he';
 __END__
 
