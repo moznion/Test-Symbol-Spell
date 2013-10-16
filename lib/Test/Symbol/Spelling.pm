@@ -12,11 +12,32 @@ use Lingua::Ispell;
 use String::CamelCase ();
 
 our $VERSION = "0.01";
-our @EXPORT  = qw/symbol_spell_ok all_symbol_spell_ok/;
+our @EXPORT  = qw(
+    symbol_spell_ok
+    all_symbol_spell_ok
+    set_ispell_path
+);
 our $SYMBOL_SPELLING = __PACKAGE__->_init;
 
 sub _init {
     my $class = shift;
+
+    # Set ispell path as default
+    unless ($Lingua::Ispell::path) {
+        foreach my $path (
+            '',
+            '/usr/local/bin/',
+            '/usr/local/sbin/',
+            '/usr/bin/',
+            '/opt/usr/bin/',
+            '/opt/local/bin/',
+        ) {
+            my $ispell_path = $path . 'ispell';
+            if (-e $ispell_path) {
+                $Lingua::Ispell::path = $ispell_path;
+            }
+        }
+    }
 
     bless {
         builder => __PACKAGE__->builder,
@@ -164,6 +185,12 @@ sub _list_up_files_from_manifest {
     my @libs = grep { m!\Alib/.*\.pm\Z! } keys %{$manifest};
     return \@libs;
 }
+
+sub set_ispell_path ($) {
+    my $ispell_path = shift;
+    $Lingua::Ispell::path = $ispell_path;
+}
+
 'songmu-san he';
 __END__
 
