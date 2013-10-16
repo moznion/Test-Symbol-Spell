@@ -1,4 +1,4 @@
-package Test::Symbol::Spell::NiceModule2;
+package Test::Symbol::Spelling::NiceModule2;
 use strict;
 use warnings;
 use utf8;

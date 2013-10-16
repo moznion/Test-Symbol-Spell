@@ -2,7 +2,7 @@ use strict;
 use Test::More;
 
 use_ok $_ for qw(
-    Test::Symbol::Spell
+    Test::Symbol::Spelling
 );
 
 done_testing;

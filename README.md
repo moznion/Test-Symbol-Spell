@@ -1,15 +1,15 @@
 [![Build Status](https://travis-ci.org/moznion/Test-Symbol-Spell.png?branch=master)](https://travis-ci.org/moznion/Test-Symbol-Spell)
 # NAME
 
-Test::Symbol::Spell - It's new $module
+Test::Symbol::Spelling - It's new $module
 
 # SYNOPSIS
 
-    use Test::Symbol::Spell;
+    use Test::Symbol::Spelling;
 
 # DESCRIPTION
 
-Test::Symbol::Spell is ...
+Test::Symbol::Spelling is ...
 
 # LICENSE
 
