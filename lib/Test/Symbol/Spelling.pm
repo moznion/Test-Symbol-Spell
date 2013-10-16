@@ -196,6 +196,11 @@ sub allow_compounds ($) {
     Lingua::Ispell::allow_compounds($bool);
 }
 
+sub make_wild_guesses ($) {
+    my $bool = shift;
+    Lingua::Ispell::make_wild_guesses($bool);
+}
+
 sub use_dictionary ($) {
     my $dictionary = shift;
     Lingua::Ispell::use_dictionary($dictionary);
