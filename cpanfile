@@ -1,7 +1,7 @@
 requires 'String::CamelCase';
 requires 'List::MoreUtils';
 requires 'PPI::Document';
-requires 'Spellunker';
+requires 'Lingua::Ispell';
 requires 'Test::Builder::Module';
 requires 'parent';
 requires 'perl', '5.008005';
