@@ -46,6 +46,7 @@
             "List::MoreUtils" : "0",
             "PPI::Document" : "0",
             "Spellunker" : "0",
+            "String::CamelCase" : "0",
             "Test::Builder::Module" : "0",
             "parent" : "0",
             "perl" : "5.008005"
