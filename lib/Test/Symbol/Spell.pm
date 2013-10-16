@@ -8,6 +8,7 @@ use ExtUtils::Manifest qw/maniread/;
 use List::MoreUtils qw/uniq/;
 use PPI::Document;
 use Spellunker;
+use Lingua::Ispell;
 use String::CamelCase ();
 
 our $VERSION = "0.01";
@@ -45,7 +46,7 @@ sub _symbol_spell_ok {
             return $builder->ok($? == 0, $file);
         }
         else {
-            exit _check_naming($builder, $file);
+            exit _check_symbol_spell($builder, $file);
         }
     }
     else {
@@ -53,7 +54,7 @@ sub _symbol_spell_ok {
     }
 }
 
-sub _check_naming {
+sub _check_symbol_spell {
     my ($builder, $file) = @_;
 
     my $fail = 0;
