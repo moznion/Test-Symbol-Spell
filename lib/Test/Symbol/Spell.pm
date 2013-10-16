@@ -12,7 +12,7 @@ use String::CamelCase ();
 
 our $VERSION = "0.01";
 
-our @EXPORT = qw/symbol_spell_ok/;
+our @EXPORT = qw/all_symbol_spell_ok symbol_spell_ok/;
 
 sub all_symbol_spell_ok () {
     my $builder = __PACKAGE__->builder;
