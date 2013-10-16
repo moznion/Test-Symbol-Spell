@@ -121,7 +121,7 @@ sub _check_symbol_spelling {
 
         for my $word (@words) {
             if (spellcheck($word)) {
-                $self->{builder}->diag("Detect bad spelling: '$name ()'");
+                $self->{builder}->diag("Detect bad spelling: $name ('$word' is wrong)");
                 $fail++;
                 next;
             }
