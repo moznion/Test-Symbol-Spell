@@ -13,29 +13,35 @@ use String::CamelCase ();
 
 our $VERSION = "0.01";
 
-our @EXPORT = qw/all_symbol_spell_ok symbol_spell_ok/;
+sub new {
+    my $class = shift;
 
-sub all_symbol_spell_ok () {
-    my $builder = __PACKAGE__->builder;
-    my $files   = _list_up_files_from_manifest($builder);
+    bless {
+        builder => __PACKAGE__->builder,
+    }, $class;
+}
 
-    $builder->plan(tests => scalar @$files);
+sub all_symbol_spell_ok {
+    my $self  = shift;
+    my $files = $self->_list_up_files_from_manifest;
+
+    $self->{builder}->plan(tests => scalar @$files);
 
     my $fail = 0;
     foreach my $file (@$files) {
-        _symbol_spell_ok($builder, $file) or $fail++;
+        $self->_symbol_spell_ok($file) or $fail++;
     }
 
     return $fail == 0;
 }
 
-sub symbol_spell_ok ($) {
-    my $file = shift;
-    return _symbol_spell_ok(__PACKAGE__->builder, $file);
+sub symbol_spell_ok {
+    my ($self, $file) = @_;
+    return $self->_symbol_spell_ok($file);
 }
 
 sub _symbol_spell_ok {
-    my ($builder, $file) = @_;
+    my ($self, $file) = @_;
 
     local $Test::Builder::Level = $Test::Builder::Level + 1;
 
@@ -43,10 +49,10 @@ sub _symbol_spell_ok {
     if ( defined $pid ) {
         if ( $pid != 0 ) {
             wait;
-            return $builder->ok($? == 0, $file);
+            return $self->{builder}->ok($? == 0, $file);
         }
         else {
-            exit _check_symbol_spell($builder, $file);
+            exit $self->_check_symbol_spell($file);
         }
     }
     else {
@@ -55,12 +61,12 @@ sub _symbol_spell_ok {
 }
 
 sub _check_symbol_spell {
-    my ($builder, $file) = @_;
+    my ($self, $file) = @_;
 
     my $fail = 0;
     my $spellunker = Spellunker->new();
 
-    my $names = _extract_names($file);
+    my $names = $self->_extract_names($file);
     foreach my $name (@$names) {
         my @words = split /::/, $name; # for functions
 
@@ -81,7 +87,7 @@ sub _check_symbol_spell {
 
         for my $word (@words) {
             unless ($spellunker->check_word($word)) {
-                $builder->diag("Detect bad spelling: '$name'");
+                $self->{builder}->diag("Detect bad spelling: '$name'");
                 $fail++;
                 next;
             }
@@ -92,10 +98,10 @@ sub _check_symbol_spell {
 }
 
 sub _extract_names {
-    my $file = shift;
+    my ($self, $file) = @_;
 
     my $document = PPI::Document->new($file);
-    $document    = _diet_PPI_doc($document);
+    $document    = $self->_diet_PPI_doc($document);
 
     my @names;
     $document->find(
@@ -127,7 +133,7 @@ sub _extract_names {
 }
 
 sub _diet_PPI_doc {
-    my $document = shift;
+    my ($self, $document) = @_;
 
     my @surplus_tokens = (
         'Operator',  'Number', 'Comment', 'Pod',
@@ -143,10 +149,10 @@ sub _diet_PPI_doc {
 }
 
 sub _list_up_files_from_manifest {
-    my $builder = shift;
+    my $self = shift;
 
     if ( not -f $ExtUtils::Manifest::MANIFEST ) {
-        $builder->plan(skip_all => "$ExtUtils::Manifest::MANIFEST doesn't exist");
+        $self->{builder}->plan(skip_all => "$ExtUtils::Manifest::MANIFEST doesn't exist");
     }
     my $manifest = maniread();
     my @libs = grep { m!\Alib/.*\.pm\Z! } keys %{$manifest};
