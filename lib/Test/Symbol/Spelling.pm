@@ -7,8 +7,7 @@ use parent qw/Test::Builder::Module/;
 use ExtUtils::Manifest qw/maniread/;
 use List::MoreUtils qw/uniq/;
 use PPI::Document;
-use Spellunker;
-use Lingua::Ispell;
+use Lingua::Ispell qw/spellcheck/;
 use String::CamelCase ();
 
 our $VERSION = "0.01";
@@ -91,7 +90,6 @@ sub _check_symbol_spell {
     my ($self, $file) = @_;
 
     my $fail = 0;
-    my $spellunker = Spellunker->new();
 
     my $names = $self->_extract_names($file);
     foreach my $name (@$names) {
@@ -113,8 +111,8 @@ sub _check_symbol_spell {
         @words = grep { $_ } @_words;
 
         for my $word (@words) {
-            unless ($spellunker->check_word($word)) {
-                $self->{builder}->diag("Detect bad spelling: '$name'");
+            if (spellcheck($word)) {
+                $self->{builder}->diag("Detect bad spelling: '$name ()'");
                 $fail++;
                 next;
             }
