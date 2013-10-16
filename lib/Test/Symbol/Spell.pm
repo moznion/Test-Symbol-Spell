@@ -29,8 +29,8 @@ sub all_naming_ok () {
 }
 
 sub naming_ok ($) {
-    my ($lib, $args) = @_;
-    return _naming_ok(__PACKAGE__->builder, $lib);
+    my $file = shift;
+    return _naming_ok(__PACKAGE__->builder, $file);
 }
 
 sub _naming_ok {
