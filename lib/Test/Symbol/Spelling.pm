@@ -186,6 +186,16 @@ sub _list_up_files_from_manifest {
     return \@libs;
 }
 
+sub add_word ($) {
+    my $word = shift;
+    Lingua::Ispell::add_word($word);
+}
+
+sub add_word ($) {
+    my $word = shift;
+    Lingua::Ispell::add_word_lc($word);
+}
+
 sub set_ispell_path ($) {
     my $ispell_path = shift;
     $Lingua::Ispell::path = $ispell_path;
