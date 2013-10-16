@@ -24,6 +24,8 @@ our @EXPORT  = qw(
     make_wild_guesses
     use_dictionary
     use_personal_dictionary
+    add_ng_word
+    use_ng_word_dictionary
 );
 our $SYMBOL_SPELLING = __PACKAGE__->_init;
 
@@ -58,7 +60,8 @@ sub _init {
     close $fh;
 
     bless {
-        builder => __PACKAGE__->builder,
+        builder  => __PACKAGE__->builder,
+        ng_words => [],
     }, $class;
 }
 
@@ -110,6 +113,9 @@ sub _check_symbol_spelling {
 
     my $fail = 0;
 
+    my %ng_words; # TODO not good?
+    $ng_words{$_} = 1 for @{$SYMBOL_SPELLING->{ng_words}};
+
     my $names = $self->_extract_names($file);
     foreach my $name (@$names) {
         my @words = split /::/, $name; # for functions
@@ -130,6 +136,12 @@ sub _check_symbol_spelling {
         @words = grep { $_ } @_words;
 
         for my $word (@words) {
+            if (defined $ng_words{$word}) {
+                $self->{builder}->diag("Detect NG word: $name ('$word' is NG word)");
+                $fail++;
+                next;
+            }
+
             if (spellcheck($word)) {
                 $self->{builder}->diag("Detect bad spelling: $name ('$word' is wrong)");
                 $fail++;
@@ -234,14 +246,47 @@ sub make_wild_guesses ($) {
 }
 
 sub use_dictionary ($) {
-    my $dictionary = shift;
-    Lingua::Ispell::use_dictionary($dictionary);
+    my $dictionaries = shift;
+    Lingua::Ispell::use_dictionary($dictionaries);
 }
 
 sub use_personal_dictionary ($) {
-    my $dictionary = shift;
-    Lingua::Ispell::use_personal_dictionary($dictionary);
+    my $dictionaries = shift;
+    Lingua::Ispell::use_personal_dictionary($dictionaries);
 }
+
+sub add_ng_word ($) {
+    my $word = shift;
+    push @{$SYMBOL_SPELLING->{ng_words}}, $word;
+}
+
+sub use_ng_word_dictionary ($) {
+    my $dictionaries = shift;
+    if (ref $dictionaries eq 'ARRAY') {
+        for my $dictionary (@$dictionaries) {
+            my $words = _read_dictionary($dictionary);
+            push @{$SYMBOL_SPELLING->{ng_words}}, @$words;
+        }
+    }
+    elsif (ref $dictionaries eq 'SCALAR') {
+        my $words = _read_dictionary($dictionaries);
+        push @{$SYMBOL_SPELLING->{ng_words}}, @$words;
+    }
+}
+
+sub _read_dictionary {
+    my $dictionary = shift;
+
+    open my $fh, '<', $dictionary;
+    my @words;
+    while (my $word = <$fh>) {
+        push @words, $word;
+    }
+    close $fh;
+
+    return \@words;
+}
+
 'songmu-san he';
 __END__
 
