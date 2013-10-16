@@ -1,4 +1,8 @@
 language: perl
+before_install:
+  - sudo apt-get install -y ispell
+script:
+  - perl Build.PL && ./Build && ./Build manifest && ./Build test
 perl:
   - 5.8
   - 5.10
