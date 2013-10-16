@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/moznion/Test-Symbol-Spell.png?branch=master)](https://travis-ci.org/moznion/Test-Symbol-Spell)
+[![Build Status](https://travis-ci.org/moznion/Test-Symbol-Spelling.png?branch=master)](https://travis-ci.org/moznion/Test-Symbol-Spelling)
 # NAME
 
 Test::Symbol::Spelling - It's new $module

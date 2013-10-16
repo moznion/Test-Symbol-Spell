@@ -63,13 +63,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/moznion/Test-Symbol-Spell/issues"
+         "web" : "https://github.com/moznion/Test-Symbol-Spelling/issues"
       },
-      "homepage" : "https://github.com/moznion/Test-Symbol-Spell",
+      "homepage" : "https://github.com/moznion/Test-Symbol-Spelling",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/moznion/Test-Symbol-Spell.git",
-         "web" : "https://github.com/moznion/Test-Symbol-Spell"
+         "url" : "git://github.com/moznion/Test-Symbol-Spelling.git",
+         "web" : "https://github.com/moznion/Test-Symbol-Spelling"
       }
    },
    "version" : "0.01"
