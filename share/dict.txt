@@ -1,9 +1,8 @@
 newline
-base64
 perl
 USA
 accessor
-Apache2
+Apache
 apps
 arrayref
 autoload
@@ -15,7 +14,6 @@ clkao
 COMPATIBLITY
 conf
 config
-Ctrl+C
 daemonize
 dereference
 eval
@@ -33,8 +31,6 @@ harakiri
 HARAKIRI
 hiratara
 httpexceptions
-IIS6
-IIS7
 inline
 INLINE
 interace
@@ -45,7 +41,6 @@ LIFECYCLE
 lighttpd
 loadable
 localhost
-Log4perl
 LogDispatch
 middlewares
 miyagawa
@@ -90,35 +85,25 @@ URLMap
 URLs
 uWSGI
 webserver
-can't
 yaml
 Ingy
-döt
 Net
 Achim
 Adam
 Cushing
-Damian Conway
-Dan Kogai
 Doherty
 Doran
 Eilam
 Ekker
 Florian
-Goro Fuji
 Heinz
 Helmberger
 Hofstetter
-Kazuho Oku
 Lapworth
-Marcel Gruenauer
 Mark
 Metheringham
 Ran
-Ricardo Signes rjbs
 Takesako
-Tatsuhiko Miyagawa
-Tokuhiro Matsuno
 audreyt
 dankogai
 gfx
@@ -127,7 +112,6 @@ mala
 mattn
 mst
 tokuhirom
-walf443
 Str
 Int
 FileHandle
@@ -141,7 +125,6 @@ afterwards
 aggregator
 aggregators
 analyses
-array's
 backend
 behaviour
 benchmarked
@@ -150,7 +133,6 @@ blogs
 breakpoint
 breakpoints
 bugtracker
-bundle's
 callback
 callbacks
 callee
@@ -160,7 +142,6 @@ chunked
 configurator
 configurators
 crosscutting
-debugger's
 denormalized
 deserialized
 distname
@@ -170,7 +151,6 @@ filename
 filenames
 formatter
 github
-hash's
 homepage
 hostname
 indices
@@ -190,8 +170,6 @@ monkeypatch
 monkeypatches
 monkeypatching
 multi
-multi-value
-multi-valued
 munge
 munger
 munging
@@ -201,10 +179,8 @@ nestable
 ok
 op
 parameterizable
-pipe's
 placeholders
 pluggable
-plugin's
 plugins
 pointcut
 pointcuts
@@ -215,7 +191,6 @@ prepends
 preprocessed
 prereq
 prereqs
-probe's
 redirections
 redispatch
 ref
@@ -224,7 +199,6 @@ runtime
 san
 searchable
 seekable
-segment's
 shipit
 sigils
 startup
@@ -243,7 +217,6 @@ subdirectory
 subobjects
 submodules
 symlinked
-terminal's
 timestamp
 tokenizes
 toolchain
@@ -252,8 +225,6 @@ unblessed
 unshifts
 username
 uuid
-value's
-variable's
 vim
 wellformedness
 whitelist
@@ -272,11 +243,6 @@ perlbrew
 cpanm
 plenv
 undef
-path_query
-no_proxy
-max_redirects
-Perl5
-cookie_jar
 Spellunker
 XS
 Furl
@@ -306,11 +272,8 @@ HTTP
 HTTPS
 IETF
 IP
-IPv4
-IPv6
 IRC
 ISP
-ISP's
 JSON
 MakeMaker
 Markdown
@@ -340,17 +303,14 @@ svk
 TIMTOWTDI
 Unicode
 URI
-URI's
 URIs
 UTC
 UTF
 UUID
 UUIDs
-W3CDTF
 wiki
 XS
 YAML
-YAML's
 sysopen
 lingr
 gmail
@@ -364,7 +324,6 @@ perl
 ftp
 gopher
 php
-de facto
 picohttpparser
 gzip
 DNS
@@ -378,15 +337,9 @@ gitignore
 CVS
 RT
 val
-O'Reilly
-'em
-mod_perl
 iterator
-xism # //xism in regexp.
 email
-e-mail
 cpan
-'s # L<Foo>'s
 minil
 dist
 ppport
@@ -394,7 +347,6 @@ json
 toml
 installable
 dzil
-md # extension for markdown
 foo
 spellunker
 org
@@ -402,7 +354,6 @@ transformability
 etc
 kazuhooku
 charsbar
-dragon3
 memcached
 pid
 jQuery
@@ -410,7 +361,6 @@ com
 multibyte
 MySQL
 kazeburo
-Amon2
 refetch
 int
 str
@@ -433,36 +383,25 @@ sftp
 DBIx
 minimalistic
 plugin
-:p
-:P
 FetchHashKeyName
 doy
-AAJKLFJEF@ # tokuhirom's spam defender
 url
 uri
 camelize
 camelized
 ithreads
 innerHTML
-CSS3
 hoge
 fuga
 moe
 jsonToObj
 objToJson
 NaN
-iso-8859-1
-\uXXXX
-PERL5LIB
-iso-2022-jp
-$Revision$
 distdir
 darcs
 WriteMakefile
 sprintf
 perlio
-bzip2
-bunzip2
 neilb
 APIs
 args
@@ -473,7 +412,6 @@ ioctl
 utime
 groff
 perldoc
-C99
 miniperl
 gcc
 gmake
@@ -482,32 +420,21 @@ regex
 autovivified
 autoflush
 SvUPGRADE
-Win32
-GB2312
-UTF-16BE
-UTF-16LE
 mput
 mget
-3rd
-1st
-2nd
 pragma
 vendorlib
 malloc
 goto
 perlbug
-i18n
-iso-2022-kr
 sed
 awk
 mmap
-HTML5
 yacc
 nroff
 brian
 lvalue
 craftworks
-tomi-ru
 nekokak
 regexp
 gfuji
@@ -522,7 +449,6 @@ barewords
 bytecode
 opcode
 OAuth
-OAuth2
 facebook
 loctouch
 ua
@@ -531,9 +457,6 @@ httpd
 colourful
 segv
 eof
-x-up-devcap-multimedia
-&apos;
-big-endian
 autobox
 bool
 uc
@@ -552,7 +475,6 @@ goccy
 uninstall
 benchmarking
 hasegawayosuke
-__defineSetter__
 RSpec
 htmlspecialchars
 GeJ
@@ -561,8 +483,8 @@ argv
 app
 OpenID
 optimizable
-hirose31
 zsh
 MetaCPAN
 ppcode
 yylval
+Util
