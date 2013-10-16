@@ -15,6 +15,13 @@ our @EXPORT  = qw(
     symbol_spell_ok
     all_symbol_spell_ok
     set_ispell_path
+    add_word
+    add_word_lc
+    accept_word
+    allow_compounds
+    make_wild_guesses
+    use_dictionary
+    use_personal_dictionary
 );
 our $SYMBOL_SPELLING = __PACKAGE__->_init;
 
@@ -191,9 +198,14 @@ sub add_word ($) {
     Lingua::Ispell::add_word($word);
 }
 
-sub add_word ($) {
+sub add_word_lc ($) {
     my $word = shift;
     Lingua::Ispell::add_word_lc($word);
+}
+
+sub accept_word ($) {
+    my $word = shift;
+    Lingua::Ispell::accept_word($word);
 }
 
 sub set_ispell_path ($) {
