@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use utf8;
 use parent qw/Test::Builder::Module/;
+use ExtUtils::Manifest qw/maniread/;
 use List::MoreUtils qw/uniq/;
 use PPI::Document;
 use Spellunker;
@@ -12,6 +13,20 @@ use String::CamelCase ();
 our $VERSION = "0.01";
 
 our @EXPORT = qw/naming_ok/;
+
+sub all_naming_ok () {
+    my $builder = __PACKAGE__->builder;
+    my $files   = _list_up_files_from_manifest($builder);
+
+    $builder->plan(tests => scalar @$files);
+
+    my $fail = 0;
+    foreach my $file (@$files) {
+        _naming_ok($builder, $file) or $fail++;
+    }
+
+    return $fail == 0;
+}
 
 sub naming_ok ($) {
     my ($lib, $args) = @_;
@@ -125,6 +140,19 @@ sub _diet_PPI_doc {
 
     return $document;
 }
+
+sub _list_up_files_from_manifest {
+    my $builder = shift;
+
+    if ( not -f $ExtUtils::Manifest::MANIFEST ) {
+        $builder->plan(skip_all => "$ExtUtils::Manifest::MANIFEST doesn't exist");
+    }
+    my $manifest = maniread();
+    my @libs = grep { m!\Alib/.*\.pm\Z! } keys %{$manifest};
+    return \@libs;
+}
+
+
 'songmu-san he';
 __END__
 
