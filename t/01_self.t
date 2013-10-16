@@ -8,7 +8,6 @@ use Test::Symbol::Spelling;
 
 use Test::More;
 
-my $checker = Test::Symbol::Spelling->new;
-$checker->all_symbol_spell_ok;
+all_symbol_spell_ok;
 
 done_testing;

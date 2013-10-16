@@ -12,8 +12,10 @@ use Lingua::Ispell;
 use String::CamelCase ();
 
 our $VERSION = "0.01";
+our @EXPORT  = qw/symbol_spell_ok all_symbol_spell_ok/;
+our $SYMBOL_SPELLING = __PACKAGE__->_init;
 
-sub new {
+sub _init {
     my $class = shift;
 
     bless {
@@ -21,7 +23,16 @@ sub new {
     }, $class;
 }
 
-sub all_symbol_spell_ok {
+sub all_symbol_spell_ok () {
+    $SYMBOL_SPELLING->_all_symbol_spell_ok;
+}
+
+sub symbol_spell_ok ($) {
+    my $file = shift;
+    $SYMBOL_SPELLING->_symbol_spell_ok($file);
+}
+
+sub _all_symbol_spell_ok {
     my $self  = shift;
     my $files = $self->_list_up_files_from_manifest;
 
@@ -33,11 +44,6 @@ sub all_symbol_spell_ok {
     }
 
     return $fail == 0;
-}
-
-sub symbol_spell_ok {
-    my ($self, $file) = @_;
-    return $self->_symbol_spell_ok($file);
 }
 
 sub _symbol_spell_ok {
@@ -158,8 +164,6 @@ sub _list_up_files_from_manifest {
     my @libs = grep { m!\Alib/.*\.pm\Z! } keys %{$manifest};
     return \@libs;
 }
-
-
 'songmu-san he';
 __END__
 
