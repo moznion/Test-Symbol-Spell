@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use parent qw/Test::Builder::Module/;
+use FindBin;
+use File::Spec::Functions qw/catfile/;
 use ExtUtils::Manifest qw/maniread/;
 use List::MoreUtils qw/uniq/;
 use PPI::Document;
@@ -46,6 +48,14 @@ sub _init {
     }
 
     Lingua::Ispell::allow_compounds(1);
+
+    # register word
+    my $dict_path = catfile($FindBin::Bin, '..', 'share', 'dict.txt');
+    open my $fh, '<', $dict_path;
+    while (my $word = <$fh>) {
+        Lingua::Ispell::accept_word($word);
+    }
+    close $fh;
 
     bless {
         builder => __PACKAGE__->builder,
