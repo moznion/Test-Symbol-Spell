@@ -12,9 +12,9 @@ use String::CamelCase ();
 
 our $VERSION = "0.01";
 
-our @EXPORT = qw/naming_ok/;
+our @EXPORT = qw/symbol_spell_ok/;
 
-sub all_naming_ok () {
+sub all_symbol_spell_ok () {
     my $builder = __PACKAGE__->builder;
     my $files   = _list_up_files_from_manifest($builder);
 
@@ -22,18 +22,18 @@ sub all_naming_ok () {
 
     my $fail = 0;
     foreach my $file (@$files) {
-        _naming_ok($builder, $file) or $fail++;
+        _symbol_spell_ok($builder, $file) or $fail++;
     }
 
     return $fail == 0;
 }
 
-sub naming_ok ($) {
+sub symbol_spell_ok ($) {
     my $file = shift;
-    return _naming_ok(__PACKAGE__->builder, $file);
+    return _symbol_spell_ok(__PACKAGE__->builder, $file);
 }
 
-sub _naming_ok {
+sub _symbol_spell_ok {
     my ($builder, $file) = @_;
 
     local $Test::Builder::Level = $Test::Builder::Level + 1;
