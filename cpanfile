@@ -3,6 +3,7 @@ requires 'List::MoreUtils';
 requires 'PPI::Document';
 requires 'Lingua::Ispell';
 requires 'Test::Builder::Module';
+requires 'File::ShareDir';
 requires 'parent';
 requires 'perl', '5.008005';
 
