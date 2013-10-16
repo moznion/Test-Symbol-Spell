@@ -8,6 +8,6 @@ use Test::Symbol::Spelling;
 
 use Test::More;
 
-all_symbol_spell_ok;
+all_symbol_spelling_ok;
 
 done_testing;

@@ -12,8 +12,8 @@ use String::CamelCase ();
 
 our $VERSION = "0.01";
 our @EXPORT  = qw(
-    symbol_spell_ok
-    all_symbol_spell_ok
+    symbol_spelling_ok
+    all_symbol_spelling_ok
     set_ispell_path
     add_word
     add_word_lc
@@ -52,16 +52,16 @@ sub _init {
     }, $class;
 }
 
-sub all_symbol_spell_ok () {
-    $SYMBOL_SPELLING->_all_symbol_spell_ok;
+sub all_symbol_spelling_ok () {
+    $SYMBOL_SPELLING->_all_symbol_spelling_ok;
 }
 
-sub symbol_spell_ok ($) {
+sub symbol_spelling_ok ($) {
     my $file = shift;
-    $SYMBOL_SPELLING->_symbol_spell_ok($file);
+    $SYMBOL_SPELLING->_symbol_spelling_ok($file);
 }
 
-sub _all_symbol_spell_ok {
+sub _all_symbol_spelling_ok {
     my $self  = shift;
     my $files = $self->_list_up_files_from_manifest;
 
@@ -69,13 +69,13 @@ sub _all_symbol_spell_ok {
 
     my $fail = 0;
     foreach my $file (@$files) {
-        $self->_symbol_spell_ok($file) or $fail++;
+        $self->_symbol_spelling_ok($file) or $fail++;
     }
 
     return $fail == 0;
 }
 
-sub _symbol_spell_ok {
+sub _symbol_spelling_ok {
     my ($self, $file) = @_;
 
     local $Test::Builder::Level = $Test::Builder::Level + 1;
@@ -87,7 +87,7 @@ sub _symbol_spell_ok {
             return $self->{builder}->ok($? == 0, $file);
         }
         else {
-            exit $self->_check_symbol_spell($file);
+            exit $self->_check_symbol_spelling($file);
         }
     }
     else {
@@ -95,7 +95,7 @@ sub _symbol_spell_ok {
     }
 }
 
-sub _check_symbol_spell {
+sub _check_symbol_spelling {
     my ($self, $file) = @_;
 
     my $fail = 0;
