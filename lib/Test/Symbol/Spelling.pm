@@ -234,14 +234,24 @@ sub make_wild_guesses ($) {
     Lingua::Ispell::make_wild_guesses($bool);
 }
 
-sub use_dictionary ($) {
+sub use_dictionary (;$) {
     my $dictionaries = shift;
-    Lingua::Ispell::use_dictionary($dictionaries);
+    if ($dictionaries) {
+        Lingua::Ispell::use_dictionary($dictionaries);
+    }
+    else {
+        Lingua::Ispell::use_dictionary();
+    }
 }
 
-sub use_personal_dictionary ($) {
+sub use_personal_dictionary (;$) {
     my $dictionaries = shift;
-    Lingua::Ispell::use_personal_dictionary($dictionaries);
+    if ($dictionaries) {
+        Lingua::Ispell::use_personal_dictionary($dictionaries);
+    }
+    else {
+        Lingua::Ispell::use_personal_dictionary();
+    }
 }
 
 sub ng_word ($) {
