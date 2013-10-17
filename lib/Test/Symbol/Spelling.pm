@@ -93,19 +93,7 @@ sub _symbol_spelling_ok {
 
     local $Test::Builder::Level = $Test::Builder::Level + 1;
 
-    my $pid = fork();
-    if ( defined $pid ) {
-        if ( $pid != 0 ) {
-            wait;
-            return $self->{builder}->ok($? == 0, $file);
-        }
-        else {
-            exit $self->_check_symbol_spelling($file);
-        }
-    }
-    else {
-        die "failed forking: $!";
-    }
+    $self->{builder}->ok($self->_check_symbol_spelling($file) == 0, $file);
 }
 
 sub _check_symbol_spelling {
