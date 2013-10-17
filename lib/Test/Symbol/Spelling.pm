@@ -125,6 +125,8 @@ sub _check_symbol_spelling {
             for my $split (String::CamelCase::wordsplit($word)) {
                 my @split_by_number = $split =~ /(\w+?)(\d+)/g;
                 if (@split_by_number) {
+                    $split =~ s/(\w+?)(\d+)//g;
+                    push @split_by_number, $split;
                     push @_words, @split_by_number;
                 }
                 else {
