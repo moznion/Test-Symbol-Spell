@@ -4,7 +4,6 @@ use strict;
 use warnings;
 use utf8;
 use FindBin;
-use Path::Tiny;
 use File::Spec::Functions qw/catdir/;
 
 use Test::Symbol::Spelling;

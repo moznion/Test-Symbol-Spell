@@ -14,6 +14,5 @@ on configure => sub {
 };
 
 on test => sub {
-    requires 'Path::Tiny';
     requires 'Test::More', '0.98';
 };
