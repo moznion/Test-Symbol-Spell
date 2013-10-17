@@ -5,12 +5,14 @@ use warnings;
 use utf8;
 
 use FindBin;
-use File::Spec::Functions qw/catdir/;
+use File::Spec::Functions qw/catfile/;
 
 use Test::Symbol::Spelling;
 
 use Test::More;
 use Test::Builder::Tester;
+
+use_personal_dictionary catfile($FindBin::Bin, 'resources', 'dictionaries', 'null.txt');
 
 my @libs = glob "t/resources/fail/*";
 for my $lib (@libs) {
