@@ -24,8 +24,7 @@ our @EXPORT  = qw(
     make_wild_guesses
     use_dictionary
     use_personal_dictionary
-    add_ng_word
-    use_ng_word_dictionary
+    ng_word
 );
 our $SYMBOL_SPELLING = __PACKAGE__->_init;
 
@@ -245,36 +244,9 @@ sub use_personal_dictionary ($) {
     Lingua::Ispell::use_personal_dictionary($dictionaries);
 }
 
-sub add_ng_word ($) {
+sub ng_word ($) {
     my $word = shift;
     push @{$SYMBOL_SPELLING->{ng_words}}, $word;
-}
-
-sub use_ng_word_dictionary ($) {
-    my $dictionaries = shift;
-    if (ref $dictionaries eq 'ARRAY') {
-        for my $dictionary (@$dictionaries) {
-            my $words = _read_dictionary($dictionary);
-            push @{$SYMBOL_SPELLING->{ng_words}}, @$words;
-        }
-    }
-    elsif (ref $dictionaries eq 'SCALAR') {
-        my $words = _read_dictionary($dictionaries);
-        push @{$SYMBOL_SPELLING->{ng_words}}, @$words;
-    }
-}
-
-sub _read_dictionary {
-    my $dictionary = shift;
-
-    open my $fh, '<', $dictionary;
-    my @words;
-    while (my $word = <$fh>) {
-        push @words, $word;
-    }
-    close $fh;
-
-    return \@words;
 }
 
 'songmu-san he';
